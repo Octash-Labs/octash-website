@@ -25,12 +25,12 @@ const HeroSection = () => {
         <div className="space-y-8 animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
             Reimagining Dairy Farming
-            <span className="block text-warm-cream">Through Research & Technology</span>
+            <span className="block text-warm-cream">In Africa</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-warm-cream/90 max-w-4xl mx-auto leading-relaxed">
-            Octash is advancing sustainable pasture management and livestock productivity 
-            in Africa through data-driven innovation.
+            Octash supports farmers to grow richer pastures, manage their herds better, and boost 
+            milk production through simple, research-driven solutions.
           </p>
           
           <div className="pt-8">
