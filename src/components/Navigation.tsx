@@ -56,11 +56,7 @@ const Navigation = () => {
             className="cursor-pointer"
             onClick={() => scrollToSection("hero")}
           >
-            <img 
-              src={Logo} 
-              alt="Octash Logo" 
-              className="h-10 w-auto" 
-            />
+            <img src={Logo} alt="Octash Logo" className="h-10 w-auto" />
 {/*             Octash */}
           </div>
 
