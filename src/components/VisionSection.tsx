@@ -25,7 +25,7 @@ const VisionSection = () => {
               </p>
               
               <p className="text-lg text-gray-700 leading-relaxed">
-                By 2030, we aim to improve productivity and resilience for over 80,000 
+                By 2035, we aim to improve productivity and resilience for over 80,000 
                 dairy farmers across Africa through research partnerships, adaptive trials, 
                 and technology transfer programs.”
               </p>
