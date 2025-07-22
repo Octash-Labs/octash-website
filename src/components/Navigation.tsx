@@ -1,4 +1,3 @@
-import Logo from "../../assets/octash-logo.svg";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -56,7 +55,7 @@ const Navigation = () => {
             className="cursor-pointer"
             onClick={() => scrollToSection("hero")}
           >
-            <img src={Logo} alt="Octash Logo" className="h-10 w-auto" />
+            <img src="/octash-logo.svg" alt="Octash Logo" className="h-10 w-auto" />
 {/*             Octash */}
           </div>
 
