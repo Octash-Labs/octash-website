@@ -5,7 +5,7 @@ const ResearchSection = () => {
     {
       icon: Satellite,
       title: "Better Pasture Monitoring",
-      description: "We’re finding simple ways for farmers to know when their grass is healthy, when it’s ready for grazing, and how to avoid overgrazing—so cows always have enough good-quality feed."
+      description: "We’re finding simple ways for farmers to know when their grass is healthy, when it’s ready for grazing, and how to avoid overgrazing, so cows always have enough good-quality feed."
     },
     {
       icon: TreePine,
@@ -62,8 +62,8 @@ const ResearchSection = () => {
         <div className="mt-16 text-center">
           <div className="bg-sage-green/20 p-8 rounded-2xl border border-sage-green/30">
             <p className="text-lg text-forest-green font-medium">
-              Currently conducting feasibility studies and pilot programs with smallholder 
-              farmers across East Africa to validate our research approaches.
+              Currently conducting feasibility studies and pilot programs with farmers 
+              in South-West Nigeria to validate our research approaches.
             </p>
           </div>
         </div>
