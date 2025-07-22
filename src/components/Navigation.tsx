@@ -52,7 +52,8 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div 
-            className="text-2xl font-bold text-forest-green cursor-pointer"
+/*             className="text-2xl font-bold text-forest-green cursor-pointer" */
+            className="cursor-pointer"
             onClick={() => scrollToSection("hero")}
           >
             <img 
