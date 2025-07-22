@@ -25,9 +25,9 @@ const VisionSection = () => {
               </p>
               
               <p className="text-lg text-gray-700 leading-relaxed">
-                By 2030, we aim to impact over 100,000 smallholder dairy farmers 
-                across East Africa through our research partnerships and technology 
-                transfer programs.
+                By 2030, we aim to improve productivity and resilience for over 80,000 
+                dairy farmers across Africa through research partnerships, adaptive trials, 
+                and technology transfer programs.”
               </p>
             </div>
             
