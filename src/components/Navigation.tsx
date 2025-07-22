@@ -12,7 +12,7 @@ const Navigation = () => {
     { id: "research", label: "Research" },
     { id: "partnership", label: "Partnership" },
     { id: "vision", label: "Vision" },
-    { id: "contact", label: "Contact" },
+    // { id: "contact", label: "Contact" },
   ];
 
   useEffect(() => {
