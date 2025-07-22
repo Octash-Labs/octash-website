@@ -37,7 +37,7 @@ const HeroSection = () => {
             <Button 
               variant="hero" 
               size="lg" 
-              className="text-xl"
+              className="text-xl bg-white text-forest-green hover:bg-gray-100"
               onClick={scrollToContact}
             >
               Partner With Us
