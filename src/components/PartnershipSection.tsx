@@ -9,7 +9,7 @@ const PartnershipSection = () => {
     },
     {
       icon: Lightbulb,
-      title: "Knowledge-Sharing Partnerships",
+      title: "Knowledge-Sharing",
       description: "We share insights with trusted partners to improve adoption and ensure solutions truly work for farmers."
     },
     {
