@@ -4,23 +4,23 @@ const ResearchSection = () => {
   const researchAreas = [
     {
       icon: Satellite,
-      title: "Pasture Monitoring with NDVI",
-      description: "Advanced satellite imagery analysis to monitor pasture health, predict forage availability, and optimize grazing patterns across African landscapes."
+      title: "Better Pasture Monitoring",
+      description: "We’re finding simple ways for farmers to know when their grass is healthy, when it’s ready for grazing, and how to avoid overgrazing—so cows always have enough good-quality feed."
     },
     {
       icon: TreePine,
-      title: "Climate-Resilient Forage Research",
-      description: "Developing and testing drought-resistant forage varieties adapted to African climates, improving livestock nutrition and farm sustainability."
+      title: "Improved Forage Research",
+      description: "We’re testing and improving grasses that grow well in local conditions, survive dry seasons, and keep cows well-fed and productive."
     },
     {
       icon: Shield,
-      title: "Biosecurity in Dairy Herds",
-      description: "Research-driven approaches to prevent disease outbreaks, improve herd health monitoring, and enhance overall farm biosecurity protocols."
+      title: "Healthier Herd",
+      description: "We’re exploring ways to prevent common diseases, improve herd health, and keep farms running smoothly with fewer losses."
     },
     {
       icon: Droplets,
-      title: "Precision Resource Management",
-      description: "Data-driven water and nutrient management systems that optimize resource use while maintaining soil health and productivity."
+      title: "Farm and Resource Management",
+      description: "Giving farmers simple, reliable ways to monitor cows, improve breeding, and manage their farms for better milk production."
     }
   ];
 
@@ -33,7 +33,7 @@ const ResearchSection = () => {
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Our research initiatives focus on practical solutions that address the unique 
-            challenges facing African dairy farmers while building sustainable agricultural systems.
+            challenges facing African dairy in ways that are sustainable and affordable.
           </p>
         </div>
         
