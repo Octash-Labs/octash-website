@@ -1,4 +1,4 @@
-import Logo from "../assets/octash-logo.svg";
+import Logo from "../../assets/octash-logo.svg";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
