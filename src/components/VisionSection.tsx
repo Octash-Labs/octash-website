@@ -25,15 +25,15 @@ const VisionSection = () => {
               </p>
               
               <p className="text-lg text-gray-700 leading-relaxed">
-                By 2030, we aim to impact over 100,000 smallholder dairy farmers 
-                across East Africa through our research partnerships and technology 
-                transfer programs.
+                By 2030, we aim to improve productivity and resilience for over 80,000 
+                dairy farmers across Africa through research partnerships, adaptive trials, 
+                and technology transfer programs.”
               </p>
             </div>
             
-            <div className="grid grid-cols-3 gap-8 pt-8">
+{/*             <div className="grid grid-cols-3 gap-8 pt-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-forest-green">100k+</div>
+                <div className="text-3xl font-bold text-forest-green">80k+</div>
                 <div className="text-sm text-gray-600">Farmers Impacted</div>
               </div>
               <div className="text-center">
@@ -44,7 +44,7 @@ const VisionSection = () => {
                 <div className="text-3xl font-bold text-forest-green">50+</div>
                 <div className="text-sm text-gray-600">Publications</div>
               </div>
-            </div>
+            </div> */}
           </div>
           
           <div className="relative">
@@ -59,7 +59,7 @@ const VisionSection = () => {
             
             <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-elevated">
               <div className="text-center">
-                <div className="text-2xl font-bold text-forest-green">2030</div>
+                <div className="text-2xl font-bold text-forest-green">2035</div>
                 <div className="text-sm text-gray-600">Target Year</div>
               </div>
             </div>

@@ -5,17 +5,17 @@ const PartnershipSection = () => {
     {
       icon: Users,
       title: "Collaborative Research",
-      description: "Joint research projects with leading institutions like IITA and Embrapa, combining expertise for greater impact."
+      description: "Joint research projects with leading institutions, combining expertise for greater impact."
     },
     {
       icon: Lightbulb,
-      title: "Open Innovation",
-      description: "Commitment to open-source methodologies and transparent sharing of research findings with the global agricultural community."
+      title: "Knowledge-Sharing Partnerships",
+      description: "We share insights with trusted partners to improve adoption and ensure solutions truly work for farmers."
     },
     {
       icon: Target,
       title: "Evidence-Based Trials",
-      description: "Rigorous field trials and data collection ensure all solutions are validated in real-world African farming conditions."
+      description: "Rigorous field trials ensure all solutions are validated in real farm conditions before scaling."
     },
     {
       icon: Globe,
@@ -32,7 +32,7 @@ const PartnershipSection = () => {
             Why Partner With Octash
           </h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            We collaborate with research institutions, agritech companies, and NGOs to 
+            We collaborate with research institutions, universities, individuals, agritech companies, and NGOs to 
             co-develop solutions that transform African agriculture through science and innovation.
           </p>
         </div>
@@ -65,10 +65,11 @@ const PartnershipSection = () => {
               universities, and organizations committed to advancing sustainable farming in Africa.
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm font-medium text-sage-green">
-              <span className="bg-sage-green/20 px-4 py-2 rounded-full">CGIAR Centers</span>
+              <span className="bg-sage-green/20 px-4 py-2 rounded-full">Research Centers</span>
               <span className="bg-sage-green/20 px-4 py-2 rounded-full">Agricultural Universities</span>
               <span className="bg-sage-green/20 px-4 py-2 rounded-full">NGO Partners</span>
               <span className="bg-sage-green/20 px-4 py-2 rounded-full">Agritech Companies</span>
+              <span className="bg-sage-green/20 px-4 py-2 rounded-full">Individuals</span>
             </div>
           </div>
         </div>

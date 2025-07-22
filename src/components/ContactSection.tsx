@@ -26,11 +26,11 @@ const ContactSection = () => {
                 </div>
                 <div className="flex items-center gap-4">
                   <Phone className="text-warm-cream" size={24} />
-                  <span className="text-lg">+234 (0) 808 1094 648</span>
+                  <span className="text-lg">+234 (0) 808 109 4648</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="text-warm-cream" size={24} />
-                  <span className="text-lg">Oyo, Nigeria</span>
+                  <span className="text-lg">Oyo, Nigeria.</span>
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@ const ContactSection = () => {
                 />
               </div>
               <Button variant="partnership" className="w-full mt-6 bg-warm-cream text-forest-green hover:bg-warm-cream/90">
-                Submit Partnership Inquiry
+                Submit
               </Button>
             </div>
           </div>
