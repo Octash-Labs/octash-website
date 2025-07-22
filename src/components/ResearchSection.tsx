@@ -27,7 +27,7 @@ const ResearchSection = () => {
   return (
     <section id="research" className="py-24 bg-white pt-32">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold text-forest-green mb-6">
             Research Focus & Initiatives
           </h2>
@@ -39,8 +39,8 @@ const ResearchSection = () => {
         
         <div className="grid md:grid-cols-2 gap-12">
           {researchAreas.map((area, index) => (
-            <div key={index} className="group">
-              <div className="bg-gradient-subtle p-8 rounded-2xl shadow-soft hover:shadow-elevated transition-smooth">
+            <div key={index} className="group animate-fade-in-up">
+              <div className="bg-gradient-subtle p-8 rounded-2xl shadow-soft hover:shadow-elevated transition-smooth hover-lift">
                 <div className="flex items-start gap-6">
                   <div className="bg-forest-green p-4 rounded-xl text-white">
                     <area.icon size={32} />

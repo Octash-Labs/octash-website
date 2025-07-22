@@ -16,10 +16,10 @@ const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-forest-green/80 to-sage-green/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-forest-green/60 to-sage-green/40" />
       
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         <div className="space-y-8 animate-fade-in">

@@ -5,7 +5,7 @@ const AboutSection = () => {
     <section id="about" className="py-24 bg-gradient-subtle pt-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
+          <div className="space-y-8 animate-slide-in-left">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-forest-green mb-6">
                 About Octash
@@ -27,8 +27,8 @@ const AboutSection = () => {
             </div>
           </div>
           
-          <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-elevated">
+          <div className="relative animate-slide-in-right">
+            <div className="relative rounded-2xl overflow-hidden shadow-elevated hover-lift">
               <img 
                 src={researchImage} 
                 alt="Agricultural research and data analysis" 

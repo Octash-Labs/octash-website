@@ -27,7 +27,7 @@ const PartnershipSection = () => {
   return (
     <section id="partnership" className="py-24 bg-gradient-earth pt-32">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold text-forest-green mb-6">
             Why Partner With Octash
           </h2>
@@ -39,8 +39,8 @@ const PartnershipSection = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {benefits.map((benefit, index) => (
-            <div key={index} className="text-center group">
-              <div className="bg-white p-8 rounded-2xl shadow-soft hover:shadow-elevated transition-smooth h-full">
+            <div key={index} className="text-center group animate-fade-in-up">
+              <div className="bg-white p-8 rounded-2xl shadow-soft hover:shadow-elevated transition-smooth h-full hover-lift">
                 <div className="bg-forest-green p-4 rounded-xl text-white w-16 h-16 mx-auto mb-6 flex items-center justify-center">
                   <benefit.icon size={32} />
                 </div>
