@@ -19,7 +19,7 @@ const AboutSection = () => {
                 farmers optimise feed, keep healthier herds, and produce more milk all year round.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                Our mission is simple: make dairy farming sustainable, profitable, and rewarding for farmers 
+                Our mission is to make dairy farming sustainable, profitable, and rewarding for farmers 
                 across Africa.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
