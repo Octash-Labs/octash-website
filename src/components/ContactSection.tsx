@@ -22,15 +22,15 @@ const ContactSection = () => {
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <Mail className="text-warm-cream" size={24} />
-                  <span className="text-lg">partnerships@octash.africa</span>
+                  <span className="text-lg">partnerships@octash.co</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <Phone className="text-warm-cream" size={24} />
-                  <span className="text-lg">+254 (0) 700 000 000</span>
+                  <span className="text-lg">+234 (0) 808 1094 648</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="text-warm-cream" size={24} />
-                  <span className="text-lg">Nairobi, Kenya</span>
+                  <span className="text-lg">Oyo, Nigeria</span>
                 </div>
               </div>
             </div>
@@ -41,7 +41,7 @@ const ContactSection = () => {
                 <li>• Joint research and development projects</li>
                 <li>• Technology transfer and commercialization</li>
                 <li>• Field trial collaboration</li>
-                <li>• Grant writing and funding applications</li>
+{/*                 <li>• Grant writing and funding applications</li> */}
                 <li>• Academic exchange programs</li>
               </ul>
             </div>
