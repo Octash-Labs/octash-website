@@ -11,22 +11,24 @@ const AboutSection = () => {
                 About Octash
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                Octash is an R&D-driven agritech venture leveraging satellite data, 
-                artificial intelligence, and precision farming techniques to transform 
-                African agriculture.
+                Octash is an R&D-driven agritech venture transforming dairy farming into a more productive, 
+                profitable and sustainable sector for African farmers.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                Our mission is to make African dairy farming sustainable, profitable, 
-                and climate-smart through evidence-based innovation and strategic 
-                partnerships with leading research institutions.
+                We deliver smarter pasture solutions, actionable data insights, and practical tools that help 
+                farmers optimise feed, keep healthier herds, and produce more milk all year round.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                Our mission is simple: make dairy farming sustainable, profitable, and rewarding for farmers 
+                across Africa.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
-                We combine cutting-edge technology with deep understanding of local 
-                agricultural challenges to develop solutions that work for African farmers.
+                Through a unique blend of research, technology, and deep local expertise, we partner with farmers, 
+                cooperatives, NGOs, and research institutions to build solutions that truly work in African farming 
+                realities.
               </p>
             </div>
           </div>
-          
           <div className="relative animate-slide-in-right">
             <div className="relative rounded-2xl overflow-hidden shadow-elevated hover-lift">
               <img 
