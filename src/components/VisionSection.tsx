@@ -2,7 +2,7 @@ import dairyImage from "@/assets/dairy-landscape.jpg";
 
 const VisionSection = () => {
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section id="vision" className="py-24 bg-white overflow-hidden pt-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">

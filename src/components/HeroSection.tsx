@@ -2,8 +2,19 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-farming.jpg";
 
 const HeroSection = () => {
+  const scrollToContact = () => {
+    const element = document.getElementById("contact");
+    if (element) {
+      const offsetTop = element.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
         style={{ backgroundImage: `url(${heroImage})` }}
@@ -23,7 +34,12 @@ const HeroSection = () => {
           </p>
           
           <div className="pt-8">
-            <Button variant="hero" size="lg" className="text-xl">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="text-xl"
+              onClick={scrollToContact}
+            >
               Partner With Us
             </Button>
           </div>

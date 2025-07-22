@@ -25,7 +25,7 @@ const ResearchSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section id="research" className="py-24 bg-white pt-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-forest-green mb-6">
