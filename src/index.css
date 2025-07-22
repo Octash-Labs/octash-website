@@ -17,13 +17,13 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 120 40% 25%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 40 20% 90%;
+    --secondary-foreground: 120 40% 25%;
 
-    --muted: 210 40% 96.1%;
+    --muted: 40 15% 95%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
     --accent: 210 40% 96.1%;
@@ -34,7 +34,26 @@ All colors MUST be HSL.
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 120 40% 25%;
+
+    /* Octash Design System */
+    --forest-green: 120 40% 25%;
+    --sage-green: 90 20% 60%;
+    --earth-brown: 30 30% 45%;
+    --sky-blue: 210 50% 70%;
+    --warm-cream: 40 20% 95%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(120 40% 25%), hsl(90 20% 60%));
+    --gradient-earth: linear-gradient(180deg, hsl(40 20% 95%), hsl(30 30% 85%));
+    --gradient-subtle: linear-gradient(135deg, hsl(40 20% 98%), hsl(120 15% 96%));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(120 40% 25% / 0.1);
+    --shadow-elevated: 0 8px 30px -8px hsl(120 40% 25% / 0.15);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
@@ -101,5 +120,26 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
