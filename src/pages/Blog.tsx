@@ -129,11 +129,10 @@ const Blog = () => {
           {/* CTA Section */}
           <div className="mt-20 text-center bg-gradient-subtle rounded-2xl p-12 animate-fade-in-up">
             <h2 className="text-3xl font-bold text-forest-green mb-4">
-              Stay Updated on Our Research
+              Stay Updated on Our Work
             </h2>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Get the latest insights on precision dairy farming and sustainable
-              agriculture delivered directly to your inbox.
+              Get the latest updates and insights delivered straight to your inbox.
             </p>
             <Link
               to="/#contact"
