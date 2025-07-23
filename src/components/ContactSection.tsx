@@ -1,7 +1,77 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { sendContactEmail, type ContactFormData } from "@/lib/emailjs";
 
 const ContactSection = () => {
+  const [formData, setFormData] = useState<ContactFormData>({
+    organization: '',
+    email: '',
+    partnershipInterest: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.organization || !formData.email || !formData.partnershipInterest) {
+      toast({
+        title: "Please fill in all fields",
+        description: "All fields are required to submit your partnership inquiry.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast({
+        title: "Invalid email address",
+        description: "Please enter a valid email address.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await sendContactEmail(formData);
+      
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for your interest. We'll get back to you within 24 hours.",
+      });
+
+      // Reset form
+      setFormData({
+        organization: '',
+        email: '',
+        partnershipInterest: ''
+      });
+    } catch (error) {
+      toast({
+        title: "Failed to send message",
+        description: "There was an error sending your message. Please try again or contact us directly at partnerships@octash.co",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-24 bg-forest-green text-white pt-32">
       <div className="max-w-7xl mx-auto px-6">
@@ -49,35 +119,55 @@ const ContactSection = () => {
           
           <div className="bg-white/10 p-8 rounded-2xl backdrop-blur-sm">
             <h3 className="text-2xl font-bold mb-6">Start a Conversation</h3>
-            <div className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Organization</label>
+                <label htmlFor="organization" className="block text-sm font-medium mb-2">Organization</label>
                 <input 
-                  type="text" 
+                  type="text"
+                  id="organization"
+                  name="organization"
+                  value={formData.organization}
+                  onChange={handleInputChange}
                   className="w-full p-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-warm-cream"
                   placeholder="Your research institution or company"
+                  disabled={isSubmitting}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Contact Email</label>
+                <label htmlFor="email" className="block text-sm font-medium mb-2">Contact Email</label>
                 <input 
-                  type="email" 
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="w-full p-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-warm-cream"
                   placeholder="your.email@institution.org"
+                  disabled={isSubmitting}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Partnership Interest</label>
+                <label htmlFor="partnershipInterest" className="block text-sm font-medium mb-2">Partnership Interest</label>
                 <textarea 
                   rows={4}
+                  id="partnershipInterest"
+                  name="partnershipInterest"
+                  value={formData.partnershipInterest}
+                  onChange={handleInputChange}
                   className="w-full p-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-warm-cream resize-none"
                   placeholder="Tell us about your research interests and potential collaboration areas..."
+                  disabled={isSubmitting}
                 />
               </div>
-              <Button variant="partnership" className="w-full mt-6 bg-warm-cream text-forest-green hover:bg-warm-cream/90">
-                Submit
+              <Button 
+                type="submit" 
+                variant="partnership" 
+                className="w-full mt-6 bg-warm-cream text-forest-green hover:bg-warm-cream/90 disabled:opacity-50"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : 'Submit'}
               </Button>
-            </div>
+            </form>
           </div>
         </div>
       </div>

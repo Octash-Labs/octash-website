@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
@@ -12,7 +13,7 @@ const Navigation = () => {
     { id: "research", label: "Research" },
     { id: "partnership", label: "Partnership" },
     { id: "vision", label: "Vision" },
-    // { id: "contact", label: "Contact" },
+    { id: "blog", label: "Blog", href: "/blog" },
   ];
 
   useEffect(() => {
@@ -62,17 +63,27 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-medium transition-smooth hover:text-forest-green ${
-                  activeSection === item.id
-                    ? "text-forest-green border-b-2 border-forest-green pb-1"
-                    : "text-gray-600"
-                }`}
-              >
-                {item.label}
-              </button>
+              item.href ? (
+                <Link
+                  key={item.id}
+                  to={item.href}
+                  className="text-sm font-medium transition-smooth hover:text-forest-green text-gray-600"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`text-sm font-medium transition-smooth hover:text-forest-green ${
+                    activeSection === item.id
+                      ? "text-forest-green border-b-2 border-forest-green pb-1"
+                      : "text-gray-600"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              )
             ))}
             <Button 
               variant="partnership" 
@@ -100,17 +111,28 @@ const Navigation = () => {
           <div className="md:hidden bg-white border-t border-sage-green/20">
             <div className="py-4 space-y-4">
               {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left px-4 py-2 text-sm font-medium transition-smooth ${
-                    activeSection === item.id
-                      ? "text-forest-green bg-sage-green/10"
-                      : "text-gray-600 hover:text-forest-green hover:bg-sage-green/5"
-                  }`}
-                >
-                  {item.label}
-                </button>
+                item.href ? (
+                  <Link
+                    key={item.id}
+                    to={item.href}
+                    className="block w-full text-left px-4 py-2 text-sm font-medium transition-smooth text-gray-600 hover:text-forest-green hover:bg-sage-green/5"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`block w-full text-left px-4 py-2 text-sm font-medium transition-smooth ${
+                      activeSection === item.id
+                        ? "text-forest-green bg-sage-green/10"
+                        : "text-gray-600 hover:text-forest-green hover:bg-sage-green/5"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                )
               ))}
               <div className="px-4 pt-2">
                 <Button 
