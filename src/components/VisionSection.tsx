@@ -30,21 +30,6 @@ const VisionSection = () => {
                 and technology transfer programs.”
               </p>
             </div>
-            
-{/*             <div className="grid grid-cols-3 gap-8 pt-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-forest-green">80k+</div>
-                <div className="text-sm text-gray-600">Farmers Impacted</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-forest-green">15+</div>
-                <div className="text-sm text-gray-600">Research Partners</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-forest-green">50+</div>
-                <div className="text-sm text-gray-600">Publications</div>
-              </div>
-            </div> */}
           </div>
           
           <div className="relative">

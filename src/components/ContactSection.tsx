@@ -1,46 +1,82 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { sendContactEmail, type ContactFormData } from "@/lib/emailjs";
+import ReactGA from "react-ga4"; // ✅ GA import
 
 const ContactSection = () => {
   const [formData, setFormData] = useState<ContactFormData>({
-    organization: '',
-    email: '',
-    partnershipInterest: ''
+    organization: "",
+    email: "",
+    partnershipInterest: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  // ✅ Track when user reaches contact section (form view)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          ReactGA.event({
+            category: "Contact",
+            action: "Viewed Contact Form",
+          });
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    const section = document.getElementById("contact");
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Basic validation
+
+    // ✅ Basic validation
     if (!formData.organization || !formData.email || !formData.partnershipInterest) {
       toast({
         title: "Please fill in all fields",
-        description: "All fields are required to submit your partnership inquiry.",
-        variant: "destructive"
+        description:
+          "All fields are required to submit your partnership inquiry.",
+        variant: "destructive",
+      });
+
+      // ✅ Track validation failure
+      ReactGA.event({
+        category: "Contact",
+        action: "Form Validation Failed",
       });
       return;
     }
 
-    // Email validation
+    // ✅ Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       toast({
         title: "Invalid email address",
         description: "Please enter a valid email address.",
-        variant: "destructive"
+        variant: "destructive",
+      });
+
+      // ✅ Track invalid email attempt
+      ReactGA.event({
+        category: "Contact",
+        action: "Invalid Email Entered",
       });
       return;
     }
@@ -49,23 +85,39 @@ const ContactSection = () => {
 
     try {
       await sendContactEmail(formData);
-      
+
       toast({
         title: "Message sent successfully!",
-        description: "Thank you for your interest. We'll get back to you within 24 hours.",
+        description:
+          "Thank you for your interest. We'll get back to you within 24 hours.",
+      });
+
+      // ✅ Track successful submission
+      ReactGA.event({
+        category: "Contact",
+        action: "Form Submitted Successfully",
+        label: formData.email,
       });
 
       // Reset form
       setFormData({
-        organization: '',
-        email: '',
-        partnershipInterest: ''
+        organization: "",
+        email: "",
+        partnershipInterest: "",
       });
     } catch (error) {
       toast({
         title: "Failed to send message",
-        description: "There was an error sending your message. Please try again or contact us directly at partnerships@octash.co",
-        variant: "destructive"
+        description:
+          "There was an error sending your message. Please try again or contact us directly at partnerships@octash.co",
+        variant: "destructive",
+      });
+
+      // ✅ Track failed email send
+      ReactGA.event({
+        category: "Contact",
+        action: "Form Submission Failed (Email Error)",
+        label: formData.email,
       });
     } finally {
       setIsSubmitting(false);
@@ -80,11 +132,12 @@ const ContactSection = () => {
             Partner With Us
           </h2>
           <p className="text-xl text-warm-cream/90 max-w-3xl mx-auto">
-            Ready to collaborate on advancing African agriculture? Let's discuss how 
-            we can work together to create sustainable solutions for dairy farming.
+            Ready to collaborate on advancing African agriculture? Let's discuss
+            how we can work together to create sustainable solutions for dairy
+            farming.
           </p>
         </div>
-        
+
         <div className="grid lg:grid-cols-2 gap-16">
           <div className="space-y-8">
             <div>
@@ -104,25 +157,31 @@ const ContactSection = () => {
                 </div>
               </div>
             </div>
-            
+
             <div>
-              <h4 className="text-xl font-bold mb-4">Partnership Opportunities</h4>
+              <h4 className="text-xl font-bold mb-4">
+                Partnership Opportunities
+              </h4>
               <ul className="space-y-2 text-warm-cream/90">
                 <li>• Joint research and development projects</li>
                 <li>• Technology transfer and commercialization</li>
                 <li>• Field trial collaboration</li>
-{/*                 <li>• Grant writing and funding applications</li> */}
                 <li>• Academic exchange programs</li>
               </ul>
             </div>
           </div>
-          
+
           <div className="bg-white/10 p-8 rounded-2xl backdrop-blur-sm">
             <h3 className="text-2xl font-bold mb-6">Start a Conversation</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="organization" className="block text-sm font-medium mb-2">Organization</label>
-                <input 
+                <label
+                  htmlFor="organization"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Organization
+                </label>
+                <input
                   type="text"
                   id="organization"
                   name="organization"
@@ -134,8 +193,13 @@ const ContactSection = () => {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">Contact Email</label>
-                <input 
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Contact Email
+                </label>
+                <input
                   type="email"
                   id="email"
                   name="email"
@@ -147,8 +211,13 @@ const ContactSection = () => {
                 />
               </div>
               <div>
-                <label htmlFor="partnershipInterest" className="block text-sm font-medium mb-2">Partnership Interest</label>
-                <textarea 
+                <label
+                  htmlFor="partnershipInterest"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Partnership Interest
+                </label>
+                <textarea
                   rows={4}
                   id="partnershipInterest"
                   name="partnershipInterest"
@@ -159,13 +228,13 @@ const ContactSection = () => {
                   disabled={isSubmitting}
                 />
               </div>
-              <Button 
-                type="submit" 
-                variant="partnership" 
+              <Button
+                type="submit"
+                variant="partnership"
                 className="w-full mt-6 bg-warm-cream text-forest-green hover:bg-warm-cream/90 disabled:opacity-50"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Sending...' : 'Submit'}
+                {isSubmitting ? "Sending..." : "Submit"}
               </Button>
             </form>
           </div>

@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import { getBlogPost, formatDate, type BlogPost } from "@/lib/blog";
+import ReactGA from "react-ga4"; // ✅ Import GA
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -24,11 +25,18 @@ const BlogPost = () => {
         const blogPost = await getBlogPost(slug);
         if (blogPost) {
           setPost(blogPost);
+
+          // ✅ Track Blog Post View in GA
+          ReactGA.event({
+            category: "Blog",
+            action: "Viewed Blog Post",
+            label: blogPost.title,
+          });
         } else {
           setNotFound(true);
         }
       } catch (error) {
-        console.error('Error loading blog post:', error);
+        console.error("Error loading blog post:", error);
         setNotFound(true);
       } finally {
         setLoading(false);
@@ -89,7 +97,7 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      
+
       <main className="pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-6">
           {/* Back Button */}
@@ -108,7 +116,7 @@ const BlogPost = () => {
               <h1 className="text-4xl md:text-5xl font-bold text-forest-green mb-6 leading-tight">
                 {post.title}
               </h1>
-              
+
               <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-8">
                 <div className="flex items-center gap-2">
                   <User className="h-4 w-4" />
@@ -122,8 +130,8 @@ const BlogPost = () => {
 
               {/* Featured Image */}
               <div className="aspect-video overflow-hidden rounded-2xl mb-8 shadow-elevated">
-                <img 
-                  src={post.image} 
+                <img
+                  src={post.image}
                   alt={post.title}
                   className="w-full h-full object-cover"
                 />
@@ -131,7 +139,7 @@ const BlogPost = () => {
             </header>
 
             {/* Article Content */}
-            <div 
+            <div
               className="prose prose-lg max-w-none prose-headings:text-forest-green prose-a:text-sage-green prose-a:no-underline hover:prose-a:underline prose-strong:text-forest-green prose-ul:list-disc prose-ol:list-decimal"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
@@ -143,10 +151,21 @@ const BlogPost = () => {
                   Interested in Collaborating?
                 </h3>
                 <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                  Learn more about our research initiatives and partnership opportunities 
-                  in precision dairy farming and sustainable agriculture.
+                  Learn more about our research initiatives and partnership
+                  opportunities in precision dairy farming and sustainable agriculture.
                 </p>
-                <Link to="/#contact">
+
+                {/* ✅ Track Get in Touch from BlogPost */}
+                <Link
+                  to="/#contact"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Contact",
+                      action: "Clicked Get in Touch from BlogPost",
+                      label: post.title,
+                    });
+                  }}
+                >
                   <Button variant="hero" size="lg">
                     Get in Touch
                   </Button>
@@ -156,7 +175,7 @@ const BlogPost = () => {
           </article>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );
