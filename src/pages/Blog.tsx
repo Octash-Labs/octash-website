@@ -131,196 +131,47 @@
 
 // export default Blog;
 
-// import { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-// import Navigation from "@/components/Navigation";
-// import Footer from "@/components/Footer";
-// import {
-//   Card,
-//   CardContent,
-//   CardDescription,
-//   CardHeader,
-//   CardTitle,
-// } from "@/components/ui/card";
-// import { Button } from "@/components/ui/button";
-// import { getAllBlogPosts, formatDate, type BlogPost } from "@/lib/blog";
-
-// const Blog = () => {
-//   const [posts, setPosts] = useState<BlogPost[]>([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const loadPosts = async () => {
-//       try {
-//         // ✅ Now fetches dynamically from all markdown files
-//         const blogPosts = await getAllBlogPosts();
-//         setPosts(blogPosts);
-//       } catch (error) {
-//         console.error("Error loading blog posts:", error);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     loadPosts();
-//   }, []);
-
-//   if (loading) {
-//     return (
-//       <div className="min-h-screen">
-//         <Navigation />
-//         <main className="pt-24 pb-16">
-//           <div className="max-w-7xl mx-auto px-6">
-//             <div className="text-center">
-//               <div className="animate-pulse">
-//                 <div className="h-8 bg-gray-200 rounded w-1/4 mx-auto mb-4"></div>
-//                 <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto"></div>
-//               </div>
-//             </div>
-//           </div>
-//         </main>
-//         <Footer />
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className="min-h-screen">
-//       <Navigation />
-
-//       <main className="pt-24 pb-16">
-//         <div className="max-w-7xl mx-auto px-6">
-//           {/* Header */}
-//           <div className="text-center mb-16 animate-fade-in-up">
-//             <h1 className="text-4xl md:text-5xl font-bold text-forest-green mb-6">
-//               Research Insights & Updates
-//             </h1>
-//             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-//               Exploring the latest developments in precision dairy farming,
-//               sustainable pasture management, and agricultural innovation across
-//               Africa.
-//             </p>
-//           </div>
-
-//           {/* Blog Posts Grid */}
-//           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-//             {posts.map((post, index) => (
-//               <Card
-//                 key={post.slug}
-//                 className={`hover-lift animate-fade-in-up bg-white shadow-soft border-0 overflow-hidden`}
-//                 style={{ animationDelay: `${index * 0.1}s` }}
-//               >
-//                 {/* Featured Image */}
-//                 <div className="aspect-video overflow-hidden">
-//                   {post.image ? (
-//                     <img
-//                       src={post.image}
-//                       alt={post.title}
-//                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-//                     />
-//                   ) : (
-//                     <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">
-//                       No image
-//                     </div>
-//                   )}
-//                 </div>
-
-//                 <CardHeader className="pb-4">
-//                   <CardTitle className="text-xl text-forest-green line-clamp-2 hover:text-sage-green transition-colors">
-//                     {post.title}
-//                   </CardTitle>
-
-//                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
-//                     <span>{post.author}</span>
-//                     <span>•</span>
-//                     <span>{formatDate(post.date)}</span>
-//                   </div>
-//                 </CardHeader>
-
-//                 <CardContent className="pt-0">
-//                   <CardDescription className="text-muted-foreground mb-6 line-clamp-3">
-//                     {post.excerpt}
-//                   </CardDescription>
-
-//                   <Link to={`/blog/${post.slug}`}>
-//                     <Button variant="outline" className="w-full group">
-//                       Read More
-//                       <span className="ml-2 transition-transform group-hover:translate-x-1">
-//                         →
-//                       </span>
-//                     </Button>
-//                   </Link>
-//                 </CardContent>
-//               </Card>
-//             ))}
-//           </div>
-
-//           {/* CTA Section */}
-//           <div className="mt-20 text-center bg-gradient-subtle rounded-2xl p-12 animate-fade-in-up">
-//             <h2 className="text-3xl font-bold text-forest-green mb-4">
-//               Stay Updated on Our Research
-//             </h2>
-//             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-//               Get the latest insights on precision dairy farming and sustainable
-//               agriculture delivered directly to your inbox.
-//             </p>
-//             <Link to="/#contact">
-//               <Button variant="hero" size="lg">
-//                 Subscribe to Updates
-//               </Button>
-//             </Link>
-//           </div>
-//         </div>
-//       </main>
-
-//       <Footer />
-//     </div>
-//   );
-// };
-
-// export default Blog;
-
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getBlogPost, BlogPost, formatDate } from "@/lib/blog";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { getAllBlogPosts, formatDate, type BlogPost } from "@/lib/blog";
 
-export default function BlogPostPage() {
-  const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<BlogPost | null>(null);
+const Blog = () => {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (slug) {
-      getBlogPost(slug).then((data) => {
-        setPost(data);
+    const loadPosts = async () => {
+      try {
+        // ✅ Now fetches dynamically from all markdown files
+        const blogPosts = await getAllBlogPosts();
+        setPosts(blogPosts);
+      } catch (error) {
+        console.error("Error loading blog posts:", error);
+      } finally {
         setLoading(false);
-      });
-    }
-  }, [slug]);
+      }
+    };
+
+    loadPosts();
+  }, []);
 
   if (loading) {
     return (
       <div className="min-h-screen">
         <Navigation />
-        <main className="pt-24 pb-16 text-center">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-1/4 mx-auto mb-4"></div>
-            <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto"></div>
+        <main className="pt-24 pb-16">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center">
+              <div className="animate-pulse">
+                <div className="h-8 bg-gray-200 rounded w-1/4 mx-auto mb-4"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto"></div>
+              </div>
+            </div>
           </div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
-
-  if (!post) {
-    return (
-      <div className="min-h-screen">
-        <Navigation />
-        <main className="pt-24 pb-16 text-center">
-          <h1 className="text-2xl font-bold">Post not found</h1>
         </main>
         <Footer />
       </div>
@@ -332,35 +183,93 @@ export default function BlogPostPage() {
       <Navigation />
 
       <main className="pt-24 pb-16">
-        <div className="max-w-3xl mx-auto px-6">
-          {/* Title */}
-          <h1 className="text-4xl font-bold text-forest-green mb-4">
-            {post.title}
-          </h1>
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Header */}
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h1 className="text-4xl md:text-5xl font-bold text-forest-green mb-6">
+              Research Insights & Updates
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Exploring the latest developments in precision dairy farming,
+              sustainable pasture management, and agricultural innovation across
+              Africa.
+            </p>
+          </div>
 
-          {/* Author + Date */}
-          <p className="text-muted-foreground mb-6">
-            {post.author} • {formatDate(post.date)}
-          </p>
+          {/* Blog Posts Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {posts.map((post, index) => (
+              <Card
+                key={post.slug}
+                className={`hover-lift animate-fade-in-up bg-white shadow-soft border-0 overflow-hidden`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {/* Featured Image */}
+                <div className="aspect-video overflow-hidden">
+                  {post.image ? (
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">
+                      No image
+                    </div>
+                  )}
+                </div>
 
-          {/* Featured image */}
-          {post.image && (
-            <img
-              src={post.image}
-              alt={post.title}
-              className="w-full rounded-lg mb-8"
-            />
-          )}
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-xl text-forest-green line-clamp-2 hover:text-sage-green transition-colors">
+                    {post.title}
+                  </CardTitle>
 
-          {/* Content */}
-          <div
-            className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <span>{post.author}</span>
+                    <span>•</span>
+                    <span>{formatDate(post.date)}</span>
+                  </div>
+                </CardHeader>
+
+                <CardContent className="pt-0">
+                  <CardDescription className="text-muted-foreground mb-6 line-clamp-3">
+                    {post.excerpt}
+                  </CardDescription>
+
+                  <Link to={`/blog/${post.slug}`}>
+                    <Button variant="outline" className="w-full group">
+                      Read More
+                      <span className="ml-2 transition-transform group-hover:translate-x-1">
+                        →
+                      </span>
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* CTA Section */}
+          <div className="mt-20 text-center bg-gradient-subtle rounded-2xl p-12 animate-fade-in-up">
+            <h2 className="text-3xl font-bold text-forest-green mb-4">
+              Stay Updated on Our Research
+            </h2>
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              Get the latest insights on precision dairy farming and sustainable
+              agriculture delivered directly to your inbox.
+            </p>
+            <Link to="/#contact">
+              <Button variant="hero" size="lg">
+                Subscribe to Updates
+              </Button>
+            </Link>
+          </div>
         </div>
       </main>
 
       <Footer />
     </div>
   );
-}
+};
+
+export default Blog;
