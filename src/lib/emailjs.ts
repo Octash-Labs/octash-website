@@ -1,9 +1,9 @@
 import emailjs from '@emailjs/browser';
 
 // EmailJS configuration
-const SERVICE_ID = 'your_service_id'; // Replace with your EmailJS service ID
-const TEMPLATE_ID = 'your_template_id'; // Replace with your EmailJS template ID
-const PUBLIC_KEY = 'your_public_key'; // Replace with your EmailJS public key
+const SERVICE_ID = 'service_qgjha4g'; // Replace with your EmailJS service ID
+const TEMPLATE_ID = 'template_kgtdrqr'; // Replace with your EmailJS template ID
+const PUBLIC_KEY = 'tb4ALylbphX9YTQ_L'; // Replace with your EmailJS public key
 
 export interface ContactFormData {
   organization: string;
