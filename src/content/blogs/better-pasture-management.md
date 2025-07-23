@@ -8,8 +8,6 @@ excerpt: "Nigeria’s dairy sector isn’t broken because we lack cows. It’s b
 image: "/blog/octash-why-dairy-in-nigeria-is-not-just-about-cows.webp"
 ---
 
-<!-- # Why Dairy in Nigeria Is Not Just About Cows -->
-
 We often talk about fixing Nigeria’s dairy sector as if it begins and ends with cows. But here’s the uncomfortable truth: **cows are not the real problem.**
 
 I once wondered why fresh milk is everywhere in Kenya, yet feels like a luxury in Nigeria. That curiosity led me to dairy farming, and what I found was far more complex than I imagined. Nigeria’s dairy challenge isn’t about a shortage of animals. It’s about the **ecosystem around them**—the systems, the feed, the land, the data, and the market. And almost every piece of that ecosystem is fragile.
