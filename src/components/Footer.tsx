@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ReactGA from "react-ga4"; // ✅ GA import
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,11 +13,17 @@ const Footer = () => {
               © {currentYear} Octash Labs. All rights reserved.
             </p>
           </div>
-          
+
           <div className="flex gap-6 text-sm">
-            <Link 
-              to="/privacy-policy" 
+            <Link
+              to="/privacy-policy"
               className="hover:text-white transition-colors duration-200"
+              onClick={() => {
+                ReactGA.event({
+                  category: "Footer",
+                  action: "Clicked Privacy Policy",
+                });
+              }}
             >
               Privacy Policy
             </Link>

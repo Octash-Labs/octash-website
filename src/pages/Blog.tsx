@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getAllBlogPosts, formatDate, type BlogPost } from "@/lib/blog";
+import ReactGA from "react-ga4"; // ✅ GA import
 
 const Blog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -13,7 +14,6 @@ const Blog = () => {
   useEffect(() => {
     const loadPosts = async () => {
       try {
-        // ✅ Now fetches dynamically from all markdown files
         const blogPosts = await getAllBlogPosts();
         setPosts(blogPosts);
       } catch (error) {
@@ -103,7 +103,17 @@ const Blog = () => {
                     {post.excerpt}
                   </CardDescription>
 
-                  <Link to={`/blog/${post.slug}`}>
+                  {/* ✅ Track blog post clicks */}
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    onClick={() => {
+                      ReactGA.event({
+                        category: "Blog",
+                        action: "Clicked Blog Post",
+                        label: post.title,
+                      });
+                    }}
+                  >
                     <Button variant="outline" className="w-full group">
                       Read More
                       <span className="ml-2 transition-transform group-hover:translate-x-1">
@@ -125,7 +135,15 @@ const Blog = () => {
               Get the latest insights on precision dairy farming and sustainable
               agriculture delivered directly to your inbox.
             </p>
-            <Link to="/#contact">
+            <Link
+              to="/#contact"
+              onClick={() => {
+                ReactGA.event({
+                  category: "Blog",
+                  action: "Clicked Subscribe to Updates",
+                });
+              }}
+            >
               <Button variant="hero" size="lg">
                 Subscribe to Updates
               </Button>

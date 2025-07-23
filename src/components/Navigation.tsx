@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import ReactGA from "react-ga4"; // ✅ GA import
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +17,7 @@ const Navigation = () => {
     { id: "research", label: "Research" },
     { id: "partnership", label: "Partnership" },
     { id: "vision", label: "Vision" },
-    { id: "blog", label: "Stories", href: "/blog" }, // ✅ Label = Stories, route = /blog
+    { id: "blog", label: "Stories", href: "/blog" },
   ];
 
   useEffect(() => {
@@ -39,7 +40,7 @@ const Navigation = () => {
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll);
     } else {
-      setActiveSection(""); // reset when leaving home
+      setActiveSection("");
     }
   }, [location.pathname]);
 
@@ -58,7 +59,6 @@ const Navigation = () => {
     }
   };
 
-  // ✅ Detect blog route (including blogpost detail pages)
   const isBlogPage = location.pathname.startsWith("/blog");
 
   return (
@@ -66,7 +66,16 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo → always scroll to Home */}
-          <div className="cursor-pointer" onClick={() => scrollToSection("hero")}>
+          <div
+            className="cursor-pointer"
+            onClick={() => {
+              scrollToSection("hero");
+              ReactGA.event({
+                category: "Navigation",
+                action: "Clicked Logo → Home",
+              });
+            }}
+          >
             <img src="/octash-logo.svg" alt="Octash Logo" className="h-10 w-auto" />
           </div>
 
@@ -75,7 +84,7 @@ const Navigation = () => {
             {navItems.map((item) => {
               const isActive =
                 item.href === "/blog"
-                  ? isBlogPage // ✅ underline when on /blog or /blog/:slug
+                  ? isBlogPage
                   : location.pathname === "/" && activeSection === item.id;
 
               return item.href ? (
@@ -87,13 +96,25 @@ const Navigation = () => {
                       ? "text-forest-green border-b-2 border-forest-green pb-1"
                       : "text-gray-600"
                   }`}
+                  onClick={() =>
+                    ReactGA.event({
+                      category: "Navigation",
+                      action: `Clicked ${item.label} Tab`,
+                    })
+                  }
                 >
                   {item.label}
                 </Link>
               ) : (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => {
+                    scrollToSection(item.id);
+                    ReactGA.event({
+                      category: "Navigation",
+                      action: `Clicked ${item.label} Tab`,
+                    });
+                  }}
                   className={`text-sm font-medium transition-smooth hover:text-forest-green ${
                     isActive
                       ? "text-forest-green border-b-2 border-forest-green pb-1"
@@ -105,17 +126,23 @@ const Navigation = () => {
               );
             })}
 
-            {/* Get In Touch sets Contact active */}
+            {/* ✅ Track Get In Touch separately */}
             <Button
               variant="partnership"
               size="sm"
-              onClick={() => scrollToSection("contact")}
+              onClick={() => {
+                scrollToSection("contact");
+                ReactGA.event({
+                  category: "Contact",
+                  action: "Clicked Get In Touch",
+                });
+              }}
             >
               Get In Touch
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -146,14 +173,26 @@ const Navigation = () => {
                         ? "text-forest-green bg-sage-green/10"
                         : "text-gray-600 hover:text-forest-green hover:bg-sage-green/5"
                     }`}
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      setIsOpen(false);
+                      ReactGA.event({
+                        category: "Navigation",
+                        action: `Clicked ${item.label} Tab (Mobile)`,
+                      });
+                    }}
                   >
                     {item.label}
                   </Link>
                 ) : (
                   <button
                     key={item.id}
-                    onClick={() => scrollToSection(item.id)}
+                    onClick={() => {
+                      scrollToSection(item.id);
+                      ReactGA.event({
+                        category: "Navigation",
+                        action: `Clicked ${item.label} Tab (Mobile)`,
+                      });
+                    }}
                     className={`block w-full text-left px-4 py-2 text-sm font-medium transition-smooth ${
                       isActive
                         ? "text-forest-green bg-sage-green/10"
@@ -165,13 +204,19 @@ const Navigation = () => {
                 );
               })}
 
-              {/* Mobile Get in Touch */}
+              {/* ✅ Track Mobile Get in Touch */}
               <div className="px-4 pt-2">
                 <Button
                   variant="partnership"
                   size="sm"
                   className="w-full"
-                  onClick={() => scrollToSection("contact")}
+                  onClick={() => {
+                    scrollToSection("contact");
+                    ReactGA.event({
+                      category: "Contact",
+                      action: "Clicked Get In Touch (Mobile)",
+                    });
+                  }}
                 >
                   Get In Touch
                 </Button>
