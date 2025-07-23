@@ -3,7 +3,7 @@ title: "How Better Pasture Management Improves Milk Production"
 author: "Octash Labs Team"
 date: "2025-07-15"
 excerpt: "Healthy pastures mean healthier cows and higher milk yields. Here's how simple grazing insights can transform smallholder farms across Nigeria."
-image: "/src/assets/dairy-landscape.jpg"
+image: "/blog/dairy-landscape.jpg"
 ---
 
 # How Better Pasture Management Improves Milk Production

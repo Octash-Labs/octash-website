@@ -3,7 +3,7 @@ title: "Brachiaria Grass: A Game-Changer for West African Dairy Farmers"
 author: "Octash Research Team"
 date: "2025-06-28"
 excerpt: "Discover how climate-resilient Brachiaria grass improves feed quality, reduces costs, and helps farmers keep their cows productive even during dry seasons."
-image: "/src/assets/hero-farming.jpg"
+image: "/blog/hero-farming.jpg"
 ---
 
 # Brachiaria Grass: A Game-Changer for West African Dairy Farmers

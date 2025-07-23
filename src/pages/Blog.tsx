@@ -13,10 +13,11 @@ const Blog = () => {
   useEffect(() => {
     const loadPosts = async () => {
       try {
+        // ✅ Now fetches dynamically from all markdown files
         const blogPosts = await getAllBlogPosts();
         setPosts(blogPosts);
       } catch (error) {
-        console.error('Error loading blog posts:', error);
+        console.error("Error loading blog posts:", error);
       } finally {
         setLoading(false);
       }
@@ -47,7 +48,7 @@ const Blog = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      
+
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
@@ -56,49 +57,58 @@ const Blog = () => {
               Research Insights & Updates
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Exploring the latest developments in precision dairy farming, 
-              sustainable pasture management, and agricultural innovation across Africa.
+              Exploring the latest developments in precision dairy farming,
+              sustainable pasture management, and agricultural innovation across
+              Africa.
             </p>
           </div>
 
           {/* Blog Posts Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post, index) => (
-              <Card 
-                key={post.slug} 
+              <Card
+                key={post.slug}
                 className={`hover-lift animate-fade-in-up bg-white shadow-soft border-0 overflow-hidden`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Featured Image */}
                 <div className="aspect-video overflow-hidden">
-                  <img 
-                    src={post.image} 
-                    alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
+                  {post.image ? (
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">
+                      No image
+                    </div>
+                  )}
                 </div>
-                
+
                 <CardHeader className="pb-4">
                   <CardTitle className="text-xl text-forest-green line-clamp-2 hover:text-sage-green transition-colors">
                     {post.title}
                   </CardTitle>
-                  
+
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <span>{post.author}</span>
                     <span>•</span>
                     <span>{formatDate(post.date)}</span>
                   </div>
                 </CardHeader>
-                
+
                 <CardContent className="pt-0">
                   <CardDescription className="text-muted-foreground mb-6 line-clamp-3">
                     {post.excerpt}
                   </CardDescription>
-                  
+
                   <Link to={`/blog/${post.slug}`}>
                     <Button variant="outline" className="w-full group">
                       Read More
-                      <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                      <span className="ml-2 transition-transform group-hover:translate-x-1">
+                        →
+                      </span>
                     </Button>
                   </Link>
                 </CardContent>
@@ -112,8 +122,8 @@ const Blog = () => {
               Stay Updated on Our Research
             </h2>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Get the latest insights on precision dairy farming and sustainable agriculture 
-              delivered directly to your inbox.
+              Get the latest insights on precision dairy farming and sustainable
+              agriculture delivered directly to your inbox.
             </p>
             <Link to="/#contact">
               <Button variant="hero" size="lg">
@@ -123,7 +133,7 @@ const Blog = () => {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );
