@@ -57,9 +57,7 @@ const Blog = () => {
               Research Insights & Updates
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Exploring the latest developments in precision dairy farming,
-              sustainable pasture management, and agricultural innovation across
-              Africa.
+             Exploring the latest insights, research, and updates from our work and beyond.
             </p>
           </div>
 
@@ -134,20 +132,33 @@ const Blog = () => {
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
               Get the latest updates and insights delivered straight to your inbox.
             </p>
-            <Link
-              to="/#contact"
+
+            {/* ✅ Updated Subscribe Button */}
+            <Button
+              variant="hero"
+              size="lg"
               onClick={() => {
+                // Fire Brevo popup form
+                if (window.Brevo) {
+                  window.Brevo.push(["openForms", { formId: "688173f826afcd403af1ba4d" }]);
+                } else {
+                  console.error("Brevo is not loaded yet!");
+                }
+
+                // Also track with Google Analytics
                 ReactGA.event({
                   category: "Blog",
                   action: "Clicked Subscribe to Updates",
                 });
               }}
             >
-              <Button variant="hero" size="lg">
-                Subscribe to Updates
-              </Button>
-            </Link>
+              Subscribe to Updates
+            </Button>
           </div>
+
+
+
+
         </div>
       </main>
 
