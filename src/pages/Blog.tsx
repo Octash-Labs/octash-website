@@ -57,7 +57,7 @@ const Blog = () => {
               Research Insights & Updates
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-             Exploring the latest insights, research, and updates from our work and beyond.
+              Exploring the latest insights, research, and updates from our work and beyond.
             </p>
           </div>
 
@@ -124,7 +124,7 @@ const Blog = () => {
             ))}
           </div>
 
-          {/* CTA Section */}
+          CTA Section
           <div className="mt-20 text-center bg-gradient-subtle rounded-2xl p-12 animate-fade-in-up">
             <h2 className="text-3xl font-bold text-forest-green mb-4">
               Stay Updated on Our Work
@@ -132,33 +132,20 @@ const Blog = () => {
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
               Get the latest updates and insights delivered straight to your inbox.
             </p>
-
-            {/* ✅ Updated Subscribe Button */}
-            <Button
-              variant="hero"
-              size="lg"
+            <Link
+              to="/#contact"
               onClick={() => {
-                // Fire Brevo popup form
-                if (window.Brevo) {
-                  window.Brevo.push(["openForms", { formId: "688173f826afcd403af1ba4d" }]);
-                } else {
-                  console.error("Brevo is not loaded yet!");
-                }
-
-                // Also track with Google Analytics
                 ReactGA.event({
                   category: "Blog",
                   action: "Clicked Subscribe to Updates",
                 });
               }}
             >
-              Subscribe to Updates
-            </Button>
+              <Button variant="hero" size="lg">
+                Subscribe to Updates
+              </Button>
+            </Link>
           </div>
-
-
-
-
         </div>
       </main>
 
