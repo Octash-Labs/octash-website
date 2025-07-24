@@ -57,9 +57,7 @@ const Blog = () => {
               Research Insights & Updates
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Exploring the latest developments in precision dairy farming,
-              sustainable pasture management, and agricultural innovation across
-              Africa.
+              Exploring the latest insights, research, and updates from our work and beyond.
             </p>
           </div>
 
