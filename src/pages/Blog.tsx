@@ -124,7 +124,7 @@ const Blog = () => {
             ))}
           </div>
 
-          CTA Section
+          {/* CTA Section */}
           <div className="mt-20 text-center bg-gradient-subtle rounded-2xl p-12 animate-fade-in-up">
             <h2 className="text-3xl font-bold text-forest-green mb-4">
               Stay Updated on Our Work
