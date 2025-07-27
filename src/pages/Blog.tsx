@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getAllBlogPosts, formatDate, type BlogPost } from "@/lib/blog";
@@ -29,6 +30,11 @@ const Blog = () => {
   if (loading) {
     return (
       <div className="min-h-screen">
+        <SEOHead 
+          title="Blog - Octash Labs | Insights on Precision Dairy Farming"
+          description="Latest insights, research findings, and expert knowledge on precision dairy farming, sustainable pasture management, and livestock productivity in Africa."
+          keywords="dairy farming blog, precision agriculture, pasture management insights, livestock research, sustainable farming Africa"
+        />
         <Navigation />
         <main className="pt-24 pb-16">
           <div className="max-w-7xl mx-auto px-6">
@@ -47,6 +53,11 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen">
+      <SEOHead 
+        title="Blog - Octash Labs | Insights on Precision Dairy Farming"
+        description="Latest insights, research findings, and expert knowledge on precision dairy farming, sustainable pasture management, and livestock productivity in Africa."
+        keywords="dairy farming blog, precision agriculture, pasture management insights, livestock research, sustainable farming Africa"
+      />
       <Navigation />
 
       <main className="pt-24 pb-16">

@@ -1,14 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://octash.co/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
+
+# Allow all search engines
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-User-agent: Twitterbot
-Allow: /
-
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
+User-agent: Twitterbot
 Allow: /
+
+# Block common bot files (optional security)
+User-agent: *
+Disallow: /api/
+Disallow: /*.json$

@@ -1,6 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://octash.co</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://octash.co/blog</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://octash.co/blog/why-dairy-in-nigeria-is-not-just-about-cows</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://octash.co/privacy-policy</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://octash.co/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <lastmod>2025-01-27</lastmod>
+  </url>
+  <url>
+    <loc>https://octash.co/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-01-27</lastmod>
+  </url>
+  <url>
+    <loc>https://octash.co/blog/better-pasture-management</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2025-01-15</lastmod>
+  </url>
+  <url>
+    <loc>https://octash.co/blog/brachiaria-grass-game-changer</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2025-01-10</lastmod>
+  </url>
+  <url>
+    <loc>https://octash.co/privacy-policy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>2025-01-27</lastmod>
+  </url>
 </urlset>

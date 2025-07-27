@@ -1,9 +1,15 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen">
+      <SEOHead 
+        title="Privacy Policy - Octash Labs"
+        description="Learn how Octash Labs protects your privacy and handles your personal information. Our commitment to data security and transparency."
+        keywords="privacy policy, data protection, Octash Labs privacy, personal information"
+      />
       <Navigation />
       
       <main className="pt-24 pb-16">

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import { getBlogPost, formatDate, type BlogPost } from "@/lib/blog";
@@ -94,8 +95,46 @@ const BlogPost = () => {
     );
   }
 
+  const structuredData = post ? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": post.image,
+    "author": {
+      "@type": "Person",
+      "name": post.author
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Octash Labs",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://octash.co/octash-logo.svg"
+      }
+    },
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://octash.co/blog/${post.slug}`
+    }
+  } : undefined;
+
   return (
     <div className="min-h-screen">
+      {post && (
+        <SEOHead 
+          title={`${post.title} | Octash Labs Blog`}
+          description={post.excerpt}
+          keywords={`${post.title}, dairy farming, precision agriculture, pasture management, livestock research`}
+          image={post.image}
+          type="article"
+          author={post.author}
+          publishedTime={post.date}
+          structuredData={structuredData}
+        />
+      )}
       <Navigation />
 
       <main className="pt-24 pb-16">

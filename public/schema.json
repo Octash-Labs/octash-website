@@ -1,0 +1,53 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://octash.co/#organization",
+      "name": "Octash Labs",
+      "url": "https://octash.co",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://octash.co/octash-logo.svg",
+        "width": 200,
+        "height": 60
+      },
+      "description": "Advancing sustainable pasture management and livestock productivity in Africa through data-driven innovation.",
+      "foundingDate": "2023",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "partnerships@octash.co",
+        "contactType": "business",
+        "areaServed": "NG"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "NG"
+      },
+      "sameAs": [
+        "https://twitter.com/OctashLabs",
+        "https://linkedin.com/company/octash-labs"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://octash.co/#website",
+      "url": "https://octash.co",
+      "name": "Octash Labs",
+      "description": "Precision dairy farming research and sustainable pasture management solutions for African farmers.",
+      "publisher": {
+        "@id": "https://octash.co/#organization"
+      },
+      "potentialAction": [
+        {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://octash.co/blog?search={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      ]
+    }
+  ]
+}
