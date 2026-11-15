@@ -1,0 +1,13 @@
+{
+  "name": "octash-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "npm run build && npx serve dist"
+  },
+  "dependencies": {
+    "marked": "15.0.12",
+    "yaml": "2.8.0"
+  }
+}

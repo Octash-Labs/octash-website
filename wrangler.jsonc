@@ -1,12 +1,16 @@
-// Static site for octash.co, served by Cloudflare Workers static assets.
-// Deploying this creates a separate Worker ("octash-site") with a workers.dev preview URL.
-// It does not touch the live "octash" Worker. Cutover to www.octash.co is a separate, approved step.
 {
+  // Static site for octash.co, built into dist/ by `npm run build`.
+  // Cloudflare Workers Builds runs the build and deploys this Worker.
+  // The custom domain is set in the Cloudflare dashboard, never here,
+  // so deploys never move www.octash.co by themselves.
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "octash-site",
   "compatibility_date": "2026-11-01",
   "assets": {
-    "directory": "./public",
+    "directory": "./dist",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
-  }
+  },
+  // Lets Cloudflare publish a preview URL for non-production branches.
+  "previews": {}
 }
