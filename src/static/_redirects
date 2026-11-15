@@ -1,0 +1,10 @@
+# Old octash.co URLs, so links already shared keep working
+/early-access   /join      301
+/early-access/  /join      301
+/institutions   /partners  301
+/corporates     /partners  301
+/government     /partners  301
+/problem        /          301
+/platform       /          301
+/roadmap        /          301
+/privacy-policy /privacy   301

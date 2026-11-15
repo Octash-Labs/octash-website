@@ -1,73 +1,35 @@
-# Welcome to your Lovable project
+# octash.co
 
-## Project info
+The Octash website, in Design System v2. Plain HTML and CSS with a small build step, deployed by Cloudflare Workers Builds. The blog is written in Pages CMS, the same setup as the Mora website.
 
-**URL**: https://lovable.dev/projects/0bc94e0a-529e-4573-8883-38ce67be6a0b
+## How it builds
+`npm run build` (scripts/build.mjs) writes `dist/`:
+- Pages: body fragments in `src/pages/` wrapped in one shared head, header and footer. Header and footer live only in the build script, so they match on every page.
+- Blog: each `posts/*.md` becomes `/blog/<slug>`, plus the `/blog` index and sitemap entries. Images go in `media/`.
+- `src/assets/` (CSS, JS) and `src/static/` (favicon, robots, `_redirects`, `_headers`) are copied as they are.
 
-## How can I edit this code?
+## Blog (Pages CMS)
+Config is `.pages.yml`. Sign in at pagescms.org with GitHub, open this repo, and write under "Blog posts". A post's address comes from its "Web address" field, else its file name without the date. Drafts are skipped. Pages CMS commits straight to `main`, so a published post goes live on the next deploy.
 
-There are several ways of editing your application.
+## Branches
+Work goes `feature/<slug>` or `fix/<slug>`, then a PR into `dev`, then `dev` into `staging`, then `staging` into `main` (production). Every branch except `main` gets its own Cloudflare preview URL. Pages CMS commits posts straight to `main`, so merge `main` back into `dev` before new work.
 
-**Use Lovable**
+## Deploy
+Cloudflare Workers Builds runs `npm run build` then `npx wrangler deploy` for the `octash-site` Worker on every push to `main`, and a preview for other branches. The www.octash.co domain is set in the Cloudflare dashboard, never in wrangler.jsonc.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0bc94e0a-529e-4573-8883-38ce67be6a0b) and start prompting.
+## Pages
+| URL | Source |
+|---|---|
+| / | src/pages/index.html |
+| /farmers | src/pages/farmers.html |
+| /partners | src/pages/partners.html |
+| /join | src/pages/join.html (form posts to the `octash-forms` Worker) |
+| /privacy | src/pages/privacy.html |
+| /blog, /blog/<slug> | posts/*.md |
 
-Changes made via Lovable will be committed automatically to this repo.
+Old URLs redirect through `src/static/_redirects`.
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/0bc94e0a-529e-4573-8883-38ce67be6a0b) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Rules
+- No em dashes in copy.
+- Company name is "Octash Labs Ltd.".
+- Copy describes only what is in the app today: free under 50 cows, no public price above that, no languages or dates beyond December 2026.
