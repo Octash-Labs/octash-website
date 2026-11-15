@@ -11,6 +11,9 @@ The Octash website, in Design System v2. Plain HTML and CSS with a small build s
 ## Blog (Pages CMS)
 Config is `.pages.yml`. Sign in at pagescms.org with GitHub, open this repo, and write under "Blog posts". A post's address comes from its "Web address" field, else its file name without the date. Drafts are skipped. Pages CMS commits straight to `main`, so a published post goes live on the next deploy.
 
+## Branches
+Work goes `feature/<slug>` or `fix/<slug>`, then a PR into `dev`, then `dev` into `staging`, then `staging` into `main` (production). Every branch except `main` gets its own Cloudflare preview URL. Pages CMS commits posts straight to `main`, so merge `main` back into `dev` before new work.
+
 ## Deploy
 Cloudflare Workers Builds runs `npm run build` then `npx wrangler deploy` for the `octash-site` Worker on every push to `main`, and a preview for other branches. The www.octash.co domain is set in the Cloudflare dashboard, never in wrangler.jsonc.
 
