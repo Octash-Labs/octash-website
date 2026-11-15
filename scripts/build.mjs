@@ -76,7 +76,7 @@ function footer(scripts = '') {
 <footer class="foot">
   <div class="wrap">
     <div><span class="serif" style="font-size:22px;color:#FFFFFF">Octash Labs Ltd.</span></div>
-    <nav aria-label="Footer"><a href="/farmers">Farmers</a><a href="/partners">Partners</a><a href="/blog">Blog</a><a href="/join">Save your place</a><a href="/privacy">Privacy</a></nav>
+    <nav aria-label="Footer"><a href="/farmers">Farmers</a><a href="/partners">Partners</a><a href="/blog">Blog</a><a href="/join">Save your place</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav>
     <div class="contact">
       <a href="mailto:contact@octash.co">contact@octash.co</a>
       <a href="https://wa.me/2348081094648">WhatsApp 0808 109 4648</a>
@@ -103,6 +103,8 @@ const PAGES = [
     scripts: '<script src="/assets/join.js" defer></script>\n' },
   { file: 'privacy', path: '/privacy', nav: '', title: 'Privacy | Octash',
     description: 'What the Octash website collects, why, how long we keep it, and how to ask us to delete it.' },
+  { file: 'terms', path: '/terms', nav: '', title: 'Terms | Octash',
+    description: 'The terms for using the octash.co website.' },
   { file: '404', path: '/404', nav: '', title: 'Page not found | Octash', description: 'This page does not exist.', noindex: true },
 ];
 
