@@ -1,0 +1,39 @@
+  <section class="wrap split" style="align-items:start;padding-top:80px">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <p class="eyebrow">Save your place</p>
+      <h1 class="serif" style="margin:0;font-size:clamp(40px,5.2vw,64px);line-height:1.06">Be one of the first farms on Octash</h1>
+      <p class="lead">The first release goes to these farms in December 2026. Tell us about your farm and we will call you.</p>
+      <div class="card" style="background:#E9F5EC;border-color:#BFDCC7;display:flex;flex-direction:column;gap:10px;padding:28px">
+        <p class="eyebrow" style="color:#006B1D">What you get</p>
+        <p style="margin:0;font-size:17px;line-height:27px">Free access for farms under 50 cows, priority onboarding, and a direct line to our team.</p>
+      </div>
+    </div>
+
+    <div class="card" style="padding:32px">
+      <form id="join-form" class="form" novalidate>
+        <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-phone">Phone number <span class="hint">(WhatsApp)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+        <div class="field"><label for="f-email">Email <span class="hint">(optional)</span></label><input id="f-email" name="email" type="email" autocomplete="email"></div>
+        <div class="field"><label for="f-role">I am a</label>
+          <select id="f-role" name="role" required>
+            <option value="">Choose one</option>
+            <option data-farm>Dairy farmer</option>
+            <option data-farm>Farm manager</option>
+            <option data-partner>Cooperative or processor</option>
+            <option data-partner>Programme or NGO</option>
+            <option data-partner>Lender or insurer</option>
+            <option data-partner>Government or research</option>
+            <option>Other</option>
+          </select></div>
+        <div class="field"><label for="f-location">State and town</label><input id="f-location" name="location" autocomplete="address-level2"></div>
+        <div class="field"><label for="f-cows" id="f-cows-label">Number of cows</label><input id="f-cows" name="cows" inputmode="numeric"></div>
+        <p style="margin:0;font-size:14px;line-height:21px;color:#6F6B5D">We use these details only to contact you about Octash. See our <a href="/privacy">privacy notice</a>.</p>
+        <p id="join-status" class="form-status" role="status" aria-live="polite"></p>
+        <div><button class="btn" type="submit">Send</button></div>
+      </form>
+      <div id="join-done" class="done" hidden tabindex="-1">
+        <h2 class="serif" style="margin:0 0 8px;font-size:28px;line-height:34px">Thank you.</h2>
+        <p style="margin:0;font-size:17px;line-height:27px">We will reach you on WhatsApp before the December release.</p>
+      </div>
+    </div>
+  </section>
