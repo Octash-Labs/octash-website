@@ -1,0 +1,12 @@
+// Static site for octash.co, served by Cloudflare Workers static assets.
+// Deploying this creates a separate Worker ("octash-site") with a workers.dev preview URL.
+// It does not touch the live "octash" Worker. Cutover to www.octash.co is a separate, approved step.
+{
+  "name": "octash-site",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./public",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

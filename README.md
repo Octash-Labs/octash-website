@@ -1,73 +1,33 @@
-# Welcome to your Lovable project
+# octash.co
 
-## Project info
+The Octash website: plain HTML and CSS in Design System v2, with no build step.
 
-**URL**: https://lovable.dev/projects/0bc94e0a-529e-4573-8883-38ce67be6a0b
+## Pages
 
-## How can I edit this code?
+| URL | File |
+|---|---|
+| / | public/index.html |
+| /farmers | public/farmers.html |
+| /partners | public/partners.html |
+| /join | public/join.html (form posts to the `octash-forms` Worker) |
+| /privacy | public/privacy.html |
 
-There are several ways of editing your application.
+Old URLs redirect through `public/_redirects`. The blog at /blog is served by the separate `octash-blog` Worker and is not in this repo.
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/0bc94e0a-529e-4573-8883-38ce67be6a0b) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Preview locally
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npx wrangler dev        # or: python3 -m http.server -d public
 ```
 
-**Edit a file directly in GitHub**
+## Deploy
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```sh
+npx wrangler deploy     # creates or updates the "octash-site" Worker on workers.dev
+```
 
-**Use GitHub Codespaces**
+Pointing www.octash.co at this Worker replaces the live site, so it needs sign-off first.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Copy and design sources
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/0bc94e0a-529e-4573-8883-38ce67be6a0b) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Copy and design were approved on 2026-11-15. Keep facts in line with the copy doc: free under 50 cows, no public price above that, no languages or dates beyond December 2026, company name "Octash Labs Ltd.".
